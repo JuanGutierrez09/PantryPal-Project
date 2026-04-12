@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from flask import redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
 
@@ -33,6 +34,16 @@ def pantry():
 
 @app.route('/add_item', methods=['GET', 'POST'])
 def add_item():
+    if request.method == 'POST':
+        name = request.form['name']
+        expiration = datetime.strptime(request.form['expiration_date'], '%Y-%m-%d').date()
+
+        new_item = Item(name=name, expiration_date=expiration)
+        db.session.add(new_item)
+        db.session.commit()
+
+        return redirect('/pantry')
+
     return render_template('add_item.html')
 
 
