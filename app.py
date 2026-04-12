@@ -22,6 +22,9 @@ class Item(db.Model):
             return 'Expiring Soon'
         else:
             return 'Fresh'
+    @property
+    def days_left(self):
+        return (self.expiration_date - date.today()).days
 
 @app.route('/')
 def index():

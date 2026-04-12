@@ -2,20 +2,24 @@
 
 {% block content %}
 
-<h2>Add Item</h2>
+<div class="card col-md-6 mx-auto">
+    <h3 class="mb-3">Add Item</h3>
 
-<form method="POST">
-    <div class="mb-3">
-        <label class="form-label">Food Name</label>
-        <input type="text" name="name" class="form-control" required>
-    </div>
+    <form method="POST">
+        <div class="mb-3">
+            <label class="form-label">Food Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
 
-    <div class="mb-3">
-        <label class="form-label">Expiration Date</label>
-        <input type="date" name="expiration_date" class="form-control" required>
-    </div>
+        <div class="mb-3">
+            <label class="form-label">Expiration Date</label>
+            <input type="date" name="expiration_date" class="form-control" required>
+        </div>
 
-    <button type="submit" class="btn btn-success">Add Item</button>
-</form>
+        <button type="submit" class="btn btn-success w-100">
+            Add to Pantry
+        </button>
+    </form>
+</div>
 
 {% endblock %}

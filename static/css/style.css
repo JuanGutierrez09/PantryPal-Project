@@ -1,1 +1,51 @@
+body {
+    background-image: url("images/image.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+}
 
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.549);
+    z-index: -1;
+}
+
+.navbar {
+    background-color: #892222 !important;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.card {
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    padding: 20px;
+    background: white;
+}
+
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.pantry-btn {
+    background-color: #bd5947;
+    color: white;
+    border-radius: 8px;
+    padding: 6px 14px;
+    border: none;
+    transition: 0.2s ease;
+}
+
+.pantry-btn:hover {
+    background-color: #b86354;
+    transform: translateY(-2px);
+}
