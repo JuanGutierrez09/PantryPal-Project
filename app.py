@@ -49,6 +49,14 @@ def add_item():
 
     return render_template('add_item.html')
 
+@app.route('/delete/<int:item_id>', methods=['POST'])
+def delete_item(item_id):
+    item = Item.query.get(item_id)
+
+    db.session.delete(item)
+    db.session.commit()
+
+    return redirect('/pantry')
 
 if __name__ == '__main__':
     with app.app_context():
