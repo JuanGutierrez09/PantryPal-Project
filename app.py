@@ -32,7 +32,7 @@ def index():
                            
 @app.route('/pantry')
 def pantry():
-    items = Item.query.all()
+    items = Item.query.order_by(Item.expiration_date.asc()).all()
     return render_template('Pantry.html', items=items)
 
 @app.route('/add_item', methods=['GET', 'POST'])
