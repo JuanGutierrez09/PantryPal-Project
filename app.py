@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request
-from flask import redirect
+from flask import Flask, render_template, request, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
 
 app = Flask(__name__)
+app.secret_key = "pantrypal-secret-key"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pantry.db'
 db = SQLAlchemy(app)
 
@@ -51,11 +51,13 @@ def add_item():
 
 @app.route('/delete/<int:item_id>', methods=['POST'])
 def delete_item(item_id):
-    item = Item.query.get(item_id)
+    item = Item.query.get_or_404(item_id)
+    item_name = item.name
 
     db.session.delete(item)
     db.session.commit()
 
+    flash(f'You have deleted "{item_name}"', 'success')
     return redirect('/pantry')
 
 @app.route('/edit/<int:item_id>', methods=['GET', 'POST'])
