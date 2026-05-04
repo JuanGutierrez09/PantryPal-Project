@@ -13,7 +13,7 @@ class Item(db.Model):
     expiration_date = db.Column(db.Date, nullable=False)
     date_added = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-       @property
+    @property
     def status(self):
         days_left = (self.expiration_date - date.today()).days
         if days_left < 0:
